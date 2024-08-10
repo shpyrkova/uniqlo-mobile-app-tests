@@ -2,9 +2,11 @@ package tests;
 
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -13,10 +15,11 @@ import static io.appium.java_client.AppiumBy.androidUIAutomator;
 import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
 
-public class UniqloTests extends TestBase {
+@Epic("Тесты на мобильное приложение Uniqlo (Android)")
+@DisplayName("Каталог товаров")
+public class CatalogueTests extends TestBase {
 
     @Test
-    @Tag("mobile")
     @DisplayName("Поиск продукта в каталоге по названию")
     void productSearchTest() {
         step("Авторизоваться в приложении", () -> {
@@ -29,12 +32,11 @@ public class UniqloTests extends TestBase {
         });
 
         step("Проверить, что открыта страница выбранного продукта", () -> {
-            $(id("com.uniqlo.my.catalogue:id/textViewProductId")).shouldHave(text("470826"));
+            $(id("com.uniqlo.my.catalogue:id/textViewProductId")).shouldHave(text("470826"), Duration.ofSeconds(10));
         });
     }
 
     @Test
-    @Tag("mobile")
     @DisplayName("Добавление продукта в вишлист")
     void addProductToWishlistTest() {
         step("Авторизоваться в приложении", () -> {
@@ -52,12 +54,11 @@ public class UniqloTests extends TestBase {
         });
 
         step("Проверить, что открыта страница выбранного продукта", () -> {
-            $(id("com.uniqlo.my.catalogue:id/name_text")).shouldHave(text("Round Shoulder Bag | Quilted"));
+            $(id("com.uniqlo.my.catalogue:id/name_text")).shouldHave(text("Round Shoulder Bag | Quilted"), Duration.ofSeconds(10));
         });
     }
 
     @Test
-    @Tag("mobile")
     @DisplayName("Просмотр гайда по размерам товара")
     void faqSearchTest() {
         step("Авторизоваться в приложении", () -> {
@@ -71,8 +72,8 @@ public class UniqloTests extends TestBase {
         });
 
         step("Проверить, что открыта страница выбранного продукта", () -> {
-            $(androidUIAutomator("new UiSelector().text(\"RATINGS\")")).shouldBe(visible);
-            $(androidUIAutomator("new UiSelector().text(\"HOW IT FITS\")")).shouldBe(visible);
+            $(androidUIAutomator("new UiSelector().text(\"RATINGS\")")).shouldBe(visible, Duration.ofSeconds(10));
+            $(androidUIAutomator("new UiSelector().text(\"HOW IT FITS\")")).shouldBe(visible, Duration.ofSeconds(10));
         });
     }
 
