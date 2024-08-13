@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.MobileDriverProvider;
 import helpers.Attachments;
@@ -30,15 +31,15 @@ public class TestBase {
     void beforeEach() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open();
-//        steps.closeOnboarding();
     }
 
     @AfterEach
     void addAttachments() {
-        Attachments.pageSource();
-        closeWebDriver();
-//        if (env.isBrowserstack()) {
-//            String sessionId = Selenide.sessionId().toString();
-//            Attachments.addVideo();
+        Attachments.screenshotAs("Last step screenshot");
+        if (env.isBrowserstack()) {
+            String sessionId = Selenide.sessionId().toString();
+            Attachments.addVideo(sessionId);
         }
+        closeWebDriver();
     }
+}

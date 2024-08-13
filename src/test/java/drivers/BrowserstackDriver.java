@@ -28,7 +28,7 @@ public class BrowserstackDriver implements WebDriverProvider {
         options.setCapability("appium:deviceName", config.getDevice());
 
         try {
-            driver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", config.getUser(), config.getKey())), options);
+            driver = new AndroidDriver(new URL(String.format("https://" + config.getUser() + ":" + config.getKey() + "@" + config.getRemoteUrl())), options);
             return driver;
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);

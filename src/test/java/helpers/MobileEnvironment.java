@@ -7,18 +7,15 @@ import io.appium.java_client.android.AndroidDriver;
 public class MobileEnvironment {
 
     public boolean isBrowserstack() {
-        String deviceHost = System.getProperty("deviceHost");
+        String env = System.getProperty("env");
 
-        if (deviceHost == null || deviceHost.equals("browserstack")) {
-            return true;
-        }
-        return false;
+        return env == null || env.equals("browserstack");
     }
 
     public AndroidDriver getDriver() {
-        String deviceHost = System.getProperty("deviceHost");
+        String env = System.getProperty("env");
 
-        if (deviceHost == null || deviceHost.equals("browserstack")) {
+        if (env == null || env.equals("browserstack")) {
             return BrowserstackDriver.getDriver();
         }
         return LocalMobileDriver.getDriver();
