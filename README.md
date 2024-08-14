@@ -73,3 +73,24 @@ gradle allureServe
 <p align="center">
   <img src="media/screencasts/test_screencast.gif"> 
 </p>
+
+# Интеграция с Allure report
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-ohmywishes-autotests/40/allure/">Allure report</a></b>
+<img src="media/screenshots/allure-main-report.png"> 
+
+#### Развернутый результат прохождения теста:
+<img src="media/screenshots/allure-test-result.png">
+
+## Интеграция с Allure TestOps
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://allure.autotests.cloud/project/4364/dashboards">Allure TestOps</a></b>
+
+>Диаграммы прохождения тестов
+>
+<img src="media/screenshots/allure-testops-dashboards.png">
+
+## Уведомления в Telegram с использованием бота
+
+> В Telegram создан канал, куда отправляются результаты прогона тестов в Jenkins. Бот после завершения прогона отправляет сообщение с отчетом о статусе прогона.<br>
+> Для уведомлений в Telegram используется библиотека <b><a target="_blank" href="https://github.com/qa-guru/allure-notifications">allure-notifications</a></b>. JAR библиотеки лежит в Jenkins.
+>
+<img src="media/screenshots/telegram-notification.png">

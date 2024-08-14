@@ -17,6 +17,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class TestBase {
 
     MobileEnvironment env = new MobileEnvironment();
+    CommonSteps steps = new CommonSteps();
 
     @BeforeAll
     static void beforeAll() {

@@ -20,58 +20,50 @@ import static io.qameta.allure.Allure.step;
 public class CatalogueTests extends TestBase {
 
     @Test
-    @DisplayName("Поиск продукта в каталоге по названию")
+    @DisplayName("Поиск товара в каталоге по названию")
     void productSearchTest() {
-        step("Авторизоваться в приложении", () -> {
-            $(id("com.uniqlo.my.catalogue:id/buttonSkip")).click();
-            $(id("com.uniqlo.my.catalogue:id/navigation_search")).click();
-            $(id("com.uniqlo.my.catalogue:id/search_edit_text")).click();
-            $(id("com.uniqlo.my.catalogue:id/search_edit_text")).sendKeys("crew neck long sleeve stripe toddler");
-            env.getDriver().pressKey(new KeyEvent(AndroidKey.ENTER));
-            $(androidUIAutomator("new UiSelector().text(\"CREW NECK T-SHIRT | LONG SLEEVE | STRIPE\")")).click();
-        });
-
-        step("Проверить, что открыта страница выбранного продукта", () -> {
-            $(id("com.uniqlo.my.catalogue:id/textViewProductId")).shouldHave(text("470826"), Duration.ofSeconds(10));
-        });
+        steps.skipOnboarding();
+        steps.searchProductWithText("crew neck long sleeve stripe toddler");
+        steps.tapOnProductName("CREW NECK T-SHIRT | LONG SLEEVE | STRIPE");
+        step("Проверить, что открыт экран выбранного товара", () ->
+            $(id("com.uniqlo.my.catalogue:id/textViewProductId")).shouldHave(text("470826"), Duration.ofSeconds(10))
+        );
     }
 
     @Test
-    @DisplayName("Добавление продукта в вишлист")
+    @DisplayName("Добавление товара в вишлист")
     void addProductToWishlistTest() {
-        step("Авторизоваться в приложении", () -> {
-            $(id("com.uniqlo.my.catalogue:id/buttonSkip")).click();
-            $(id("com.uniqlo.my.catalogue:id/navigation_search")).click();
-            $(id("com.uniqlo.my.catalogue:id/search_edit_text")).click();
-            $(id("com.uniqlo.my.catalogue:id/search_edit_text")).sendKeys("round shoulder bag quilted");
-            env.getDriver().pressKey(new KeyEvent(AndroidKey.ENTER));
-            $(androidUIAutomator("new UiSelector().text(\"ROUND SHOULDER BAG | QUILTED\")")).click();
+        steps.skipOnboarding();
+        steps.searchProductWithText("round shoulder bag quilted");
+        steps.tapOnProductName("ROUND SHOULDER BAG | QUILTED");
+        step("Добавить товар в вишлист", () ->
             $(androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" +
-                    ".scrollIntoView(new UiSelector().resourceId(\"com.uniqlo.my.catalogue:id/favorite_button\"))")).click();
-            env.getDriver().pressKey(new KeyEvent(AndroidKey.BACK));
-            $(id("com.uniqlo.my.catalogue:id/navigation_favorite")).click();
-            $(id("com.uniqlo.my.catalogue:id/dont_receive_button")).click();
-        });
-
-        step("Проверить, что открыта страница выбранного продукта", () -> {
-            $(id("com.uniqlo.my.catalogue:id/name_text")).shouldHave(text("Round Shoulder Bag | Quilted"), Duration.ofSeconds(10));
-        });
+                    ".scrollIntoView(new UiSelector().resourceId(\"com.uniqlo.my.catalogue:id/favorite_button\"))")).click()
+        );
+        step("Вернуться на предыдущий экран", () ->
+            env.getDriver().pressKey(new KeyEvent(AndroidKey.BACK))
+        );
+        step("Перейти в меню Wish list", () ->
+            $(id("com.uniqlo.my.catalogue:id/navigation_favorite")).click()
+        );
+        step("Отклонить получение уведомлений", () ->
+            $(id("com.uniqlo.my.catalogue:id/dont_receive_button")).click()
+        );
+        step("Проверить, что в вишлисте есть добавленный товар", () ->
+            $(id("com.uniqlo.my.catalogue:id/name_text")).shouldHave(text("Round Shoulder Bag | Quilted"), Duration.ofSeconds(10))
+        );
     }
 
     @Test
-    @DisplayName("Просмотр гайда по размерам товара")
-    void faqSearchTest() {
-        step("Авторизоваться в приложении", () -> {
-            $(id("com.uniqlo.my.catalogue:id/buttonSkip")).click();
-            $(id("com.uniqlo.my.catalogue:id/navigation_search")).click();
-            $(id("com.uniqlo.my.catalogue:id/search_edit_text")).click();
-            $(id("com.uniqlo.my.catalogue:id/search_edit_text")).sendKeys("Ultra Stretch DRY-EX Full-Zip Hoodie Print");
-            env.getDriver().pressKey(new KeyEvent(AndroidKey.ENTER));
-            $(androidUIAutomator("new UiSelector().text(\"ULTRA STRETCH DRY-EX FULL-ZIP HOODIE | PRINT\")")).click();
-            $(id("com.uniqlo.my.catalogue:id/reviewNumText")).click();
-        });
-
-        step("Проверить, что открыта страница выбранного продукта", () -> {
+    @DisplayName("Просмотр экрана отзывов о товаре")
+    void reviewScreenTest() {
+        steps.skipOnboarding();
+        steps.searchProductWithText("Ultra Stretch DRY-EX Full-Zip Hoodie Print");
+        steps.tapOnProductName("ULTRA STRETCH DRY-EX FULL-ZIP HOODIE | PRINT");
+        step("Тап на количество отзывов на товар", () ->
+                $(id("com.uniqlo.my.catalogue:id/reviewNumText")).click()
+        );
+        step("Проверить, что открыт экран отзывов о товаре", () -> {
             $(androidUIAutomator("new UiSelector().text(\"RATINGS\")")).shouldBe(visible, Duration.ofSeconds(10));
             $(androidUIAutomator("new UiSelector().text(\"HOW IT FITS\")")).shouldBe(visible, Duration.ofSeconds(10));
         });
