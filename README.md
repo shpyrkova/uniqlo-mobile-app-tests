@@ -1,3 +1,15 @@
+## Содержание
++ [Описание проекта](#Описание-проекта)
++ [Технологии и инструменты](#Технологии-и-инструменты)
++ [Реализованные проверки](#Реализованные-проверки)
++ [Запуск тестов](#Запуск-тестов)
+  + Запуск из Jenkins
+  + Локальный запуск
++ [Пример выполнения WEB теста в Browserstack](#Пример-выполнения-теста-в-Browserstack)
++ [Интеграция с Allure Report](#Интеграция-с-Allure-report)
++ [Интеграция с Allure TestOps](#Интеграция-с-Allure-TestOps)
++ [Уведомления в Telegram с использованием бота](#Уведомления-в-Telegram-с-использованием-бота)
+
 ## Описание проекта
 В проекте реализованы автотесты на мобильное приложение Uniqlo для Android.
 
@@ -78,7 +90,7 @@ gradle allureServe
 Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-uniqlo-mobile-app-tests/6/allure/">Allure report</a></b>
 <img src="media/screenshots/allure-main-report.png"> 
 
-#### Развернутый результат прохождения теста:
+### Развернутый результат прохождения теста:
 <img src="media/screenshots/allure-test-result.png">
 
 ## Интеграция с Allure TestOps
