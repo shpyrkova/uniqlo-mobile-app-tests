@@ -71,18 +71,18 @@ gradle allureServe
 
 > К результатам прогонов тестов, запущенных на Browserstack, прикладывается видео выполнения теста.
 <p align="center">
-  <img src="media/screencasts/test_screencast.gif"> 
+  <img src="media/screencasts/test-screencast.gif"> 
 </p>
 
 # Интеграция с Allure report
-Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-ohmywishes-autotests/40/allure/">Allure report</a></b>
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-uniqlo-mobile-app-tests/6/allure/">Allure report</a></b>
 <img src="media/screenshots/allure-main-report.png"> 
 
 #### Развернутый результат прохождения теста:
 <img src="media/screenshots/allure-test-result.png">
 
 ## Интеграция с Allure TestOps
-Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://allure.autotests.cloud/project/4364/dashboards">Allure TestOps</a></b>
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://allure.autotests.cloud/project/4368/dashboards">Allure TestOps</a></b>
 
 >Диаграммы прохождения тестов
 >
