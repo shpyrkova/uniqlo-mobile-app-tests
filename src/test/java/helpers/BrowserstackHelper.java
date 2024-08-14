@@ -6,7 +6,7 @@ import org.aeonbits.owner.ConfigFactory;
 import static io.restassured.RestAssured.given;
 
 
-public class Browserstack {
+public class BrowserstackHelper {
 
     private static final BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
 
