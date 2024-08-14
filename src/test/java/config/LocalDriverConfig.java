@@ -12,7 +12,6 @@ public interface LocalDriverConfig extends Config {
     String getDevice();
 
     @Key("appPackage")
-    @DefaultValue("com.ohmywishes.start")
     String getAppPackage();
 
     @Key("appiumUrl")

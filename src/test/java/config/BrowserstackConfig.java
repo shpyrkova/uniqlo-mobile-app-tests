@@ -4,6 +4,7 @@ import org.aeonbits.owner.Config;
 
 @Config.Sources({"classpath:browserstack.properties"})
 public interface BrowserstackConfig extends Config {
+
     @Key("user")
     String getUser();
 
@@ -17,7 +18,6 @@ public interface BrowserstackConfig extends Config {
     String getApp();
 
     @Key("device")
-    @DefaultValue("Samsung Galaxy S23 Ultra")
     String getDevice();
 
 }
