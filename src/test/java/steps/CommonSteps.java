@@ -1,4 +1,4 @@
-package tests;
+package steps;
 
 import helpers.MobileEnvironment;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -11,7 +11,7 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class CommonSteps {
 
-    MobileEnvironment env = new MobileEnvironment();
+    final MobileEnvironment env = new MobileEnvironment();
 
     @Step("Пропустить онбординг")
     public void skipOnboarding() {

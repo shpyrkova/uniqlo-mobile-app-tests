@@ -10,14 +10,15 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import steps.CommonSteps;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
 
-    MobileEnvironment env = new MobileEnvironment();
-    CommonSteps steps = new CommonSteps();
+    final MobileEnvironment env = new MobileEnvironment();
+    final CommonSteps steps = new CommonSteps();
 
     @BeforeAll
     static void beforeAll() {
